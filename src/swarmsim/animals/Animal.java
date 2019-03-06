@@ -8,6 +8,17 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
+
+/**
+ *
+ * TODO:  make sure that animals can't be pushed off the window
+ *
+ * their coordinates should always be bound checked, like the trackers in your Sproj
+ */
+
+
+
+
 public abstract class Animal {
 
 
@@ -95,8 +106,8 @@ public abstract class Animal {
                 (prox_y - (WINDOW_BOUNDS_Y - centery))
                 : 0.0;
 
-        x_component *= x_multiplier;
-        y_component *= y_multiplier;
+        x_component *= 0.5 * x_multiplier;
+        y_component *= 0.5 * y_multiplier;
 
         // this sets the new theta value too.
         obstacle_avoidance.setComponents(x_component, y_component);

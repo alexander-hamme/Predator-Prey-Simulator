@@ -29,10 +29,11 @@ public class DragonFly extends Predator {
     private final long seeking_frequency = 5000L;
 
     private long time_since_last_meal = 0L;
-    private final long eating_frequency = 5000L;
+    private final long eating_frequency = 500L;
 
     private BufferedImage seeking_image;
     private BufferedImage hunting_image;
+    private BufferedImage eating_image;
 
 
     public DragonFly() throws IOException {
@@ -47,6 +48,7 @@ public class DragonFly extends Predator {
 //        this.image = ImageIO.read(new File("images/fly.png"));
         hunting_image = ImageIO.read(new File("images/dragonfly_hunt.png"));
         seeking_image = ImageIO.read(new File("images/dragonfly_seek.png"));
+        eating_image = ImageIO.read(new File("images/dragonfly_eat.png"));
 
         this.image = hunting_image;
 
@@ -110,7 +112,12 @@ public class DragonFly extends Predator {
     }
 
     private void endSeek(boolean caughtPrey) {
-        this.behaviorState = (caughtPrey) ? BehaviorState.EATING : BehaviorState.HUNTING;
+        if (caughtPrey) {
+            this.behaviorState = BehaviorState.EATING;
+            time_since_last_meal = System.currentTimeMillis();
+        } else {
+            this.behaviorState = BehaviorState.HUNTING;
+        }
         this.currently_hunting = null;
         this.time_since_last_seek = System.currentTimeMillis();
     }
@@ -202,7 +209,6 @@ public class DragonFly extends Predator {
         forward_motion.incrementTheta(random_generator.getRandInt(-direction_variance, direction_variance));  // add direction variance
 
 
-
         if (this.behaviorState == BehaviorState.SEEKING) {
 
             seek();
@@ -246,7 +252,7 @@ public class DragonFly extends Predator {
         switch(this.behaviorState) {
             case HUNTING: this.image = hunting_image; break;
             case SEEKING: this.image = seeking_image; break;
-            case EATING: this.image = hunting_image; break;
+            case EATING: this.image = eating_image; break;
         }
 
         if (transform_op == null) {

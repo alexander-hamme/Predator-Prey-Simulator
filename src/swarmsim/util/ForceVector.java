@@ -5,7 +5,7 @@ package swarmsim.util;
 
 public class ForceVector {
 
-    private final int max_angle = 359;          // TODO change this to 360 and make everything be < than it instead of <=
+    private final int max_angle = 359;
 
     private double magnitude;
     private double theta;  // in degrees
