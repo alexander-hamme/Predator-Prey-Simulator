@@ -19,12 +19,6 @@ import swarmsim.util.SimKeyAdapter;
 import javax.swing.Timer;
 
 /**
- * TODO:  make another version of this that is 2D but from the side - frog can climb on the walls and ceiling,
- * todo    but has to turn or jump to shoot tongue
- */
-
-
-/**
  * This is where all the animation code goes
  */
 
