@@ -24,8 +24,6 @@ import javax.swing.Timer;
 
 public class Simulation extends JPanel implements ActionListener {
 
-
-    private boolean GAME_OVER = false;
     private boolean DRAW_FORCE_VECTORS = false;
 
     private AffineTransform transformer = new AffineTransform();
