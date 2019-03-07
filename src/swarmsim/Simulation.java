@@ -66,7 +66,7 @@ public class Simulation extends JPanel implements ActionListener {
     private void createAnimals() throws IOException {
         // check level first...
 
-        int num_prey = 50;
+        int num_prey = 60;
         prey_animals = new ArrayList<>();
 
         while (num_prey-- > 0) {

@@ -2,7 +2,6 @@ package swarmsim.animals;
 
 import swarmsim.App;
 import swarmsim.util.ForceVector;
-import swarmsim.util.RandGen;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -13,17 +12,17 @@ import java.util.List;
 public class DragonFly extends Predator {
 
     private int other_predator_avoid_thresh = 3;
-    private final int direction_variance = 5;  // bound (in degrees) for how much Fly randomly varies its direction while moving
+    private final int direction_variance = 4;  // bound (in degrees) for how much Fly randomly varies its direction while moving
 
-    private static final double movement_speed = 3.5;
+    private static final double movement_speed = 3.7;
     private int prey_swarm_thresh = 5;
 
     private Prey currently_hunting = null;
 
-    private final int hunting_ticks = 15;
-    private int hunting_tick = 1;
+    private final int seeking_ticks = 17;
+    private int seeking_tick = 1;
 
-    private final int hunting_risk = 2;   // 2 body lengths
+    private final int seek_risk = 2;   // 2 body lengths
 
     private long time_since_last_seek = 0L;
     private final long seeking_frequency = 5000L;
@@ -73,7 +72,7 @@ public class DragonFly extends Predator {
 
     // force_calculation_nums : {x_component, y_component, this.centerx, this.centery, prey_x, prey_y, dx, dy}
     private void startSeek(final Prey prey) {
-        this.hunting_tick = 1;
+        this.seeking_tick = 1;
         this.currently_hunting = prey;
         this.behaviorState = BehaviorState.SEEKING;
     }
@@ -97,7 +96,7 @@ public class DragonFly extends Predator {
 
         } else {
 
-            if (++hunting_tick > hunting_ticks) {
+            if (++seeking_tick > seeking_ticks) {
 
                 endSeek(false);
 
@@ -150,7 +149,7 @@ public class DragonFly extends Predator {
                 // TODO: OR:  if abs(0.01 * ((centerx - prey_x) - dx)) > abs(x_component) ... ;
 
                 // move closer to other animals if you're more than a body's length away
-                if (Math.pow(Math.pow(dx, 2) + Math.pow(dy, 2), 0.5) <= img_width * hunting_risk) {
+                if (Math.pow(Math.pow(dx, 2) + Math.pow(dy, 2), 0.5) <= img_width * seek_risk) {
 
                     if (canSeek()) {
                         startSeek(prey);
