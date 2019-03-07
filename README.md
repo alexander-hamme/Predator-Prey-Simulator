@@ -1,5 +1,3 @@
 # Predator-Prey-Simulator
 
-<p align="center"> 
-<img src="/sample/swarm_sim.gif">
-</p>
+![](/sample/swarm_sim.gif?raw=true)
