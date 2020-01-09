@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import swarmsim.animals.*;
 import swarmsim.util.ForceVector;
-import swarmsim.util.SimKeyAdapter;
 
 
 import javax.swing.Timer;
@@ -28,7 +27,6 @@ public class Simulation extends JPanel implements ActionListener {
 
     private AffineTransform transformer = new AffineTransform();
     private AffineTransformOp transform_op;
-    private SimKeyAdapter keyAdapter = new SimKeyAdapter();
     private Timer timer;
 
     private java.util.List<Prey> prey_animals;
@@ -76,7 +74,6 @@ public class Simulation extends JPanel implements ActionListener {
     }
 
     private void setup() throws IOException {
-        addKeyListener(keyAdapter);
         setBackground(Color.LIGHT_GRAY);
         background_img = ImageIO.read(new File(bg_img_path));
         setFocusable(true);
