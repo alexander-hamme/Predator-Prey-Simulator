@@ -1,7 +1,7 @@
 # Predator-Prey-Simulator
 
-Currently using flies and dragonflies to try to simulate semi-realistic flight behaviors in the context of predator / prey swam interactions
+Made some simple buggies for simulations of predator / prey swarm interactions for fun
 
-Uses **Finite State Machines**
+(uses finite state machines)
 
 ![](/sample/swarm_sim.gif?raw=true)
