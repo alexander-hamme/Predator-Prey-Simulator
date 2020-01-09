@@ -1,6 +1,6 @@
 # Predator-Prey-Simulator
 
-Made some simple buggies for simulations of predator / prey swarm interactions for fun
+Made some simple buggies for simulations of predator / prey swarm interactions, just for fun.
 
 (uses finite state machines)
 
